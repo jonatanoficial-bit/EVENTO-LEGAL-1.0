@@ -1,0 +1,11 @@
+{
+  "packs": [
+    {
+      "id": "core.templates",
+      "name": "Core Templates",
+      "version": "1.0.0",
+      "description": "Templates essenciais de eventos.",
+      "path": "./content/core/core.templates.json"
+    }
+  ]
+}

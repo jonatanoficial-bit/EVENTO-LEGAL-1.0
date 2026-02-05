@@ -1,0 +1,129 @@
+{
+  "id": "core.templates",
+  "name": "Core Templates",
+  "version": "1.0.0",
+  "description": "Templates essenciais (genérico, festa, reunião, palestra, casamento).",
+  "type": "templates",
+  "data": {
+    "eventTypes": [
+      {
+        "typeId": "generic",
+        "name": "Genérico",
+        "defaultTasks": [
+          {
+            "phase": "pre",
+            "title": "Definir objetivo do evento"
+          },
+          {
+            "phase": "pre",
+            "title": "Criar cronograma macro"
+          },
+          {
+            "phase": "exec",
+            "title": "Checklist de execução (entrada / som / equipe)"
+          },
+          {
+            "phase": "post",
+            "title": "Coletar feedbacks e aprendizados"
+          }
+        ]
+      },
+      {
+        "typeId": "wedding",
+        "name": "Casamento",
+        "defaultTasks": [
+          {
+            "phase": "pre",
+            "title": "Definir orçamento e prioridades"
+          },
+          {
+            "phase": "pre",
+            "title": "Lista de convidados (rascunho)"
+          },
+          {
+            "phase": "pre",
+            "title": "Pesquisar locais e datas"
+          },
+          {
+            "phase": "pre",
+            "title": "Contratar: cerimonial / buffet / foto e vídeo"
+          },
+          {
+            "phase": "exec",
+            "title": "Roteiro do dia (entrada, votos, festa)"
+          },
+          {
+            "phase": "post",
+            "title": "Agradecimentos e pós-evento"
+          }
+        ]
+      },
+      {
+        "typeId": "birthday",
+        "name": "Aniversário/Festa",
+        "defaultTasks": [
+          {
+            "phase": "pre",
+            "title": "Tema, decoração e lista"
+          },
+          {
+            "phase": "pre",
+            "title": "Orçar buffet/bolo/doces"
+          },
+          {
+            "phase": "exec",
+            "title": "Montagem e recepção"
+          },
+          {
+            "phase": "post",
+            "title": "Desmontagem e limpeza"
+          }
+        ]
+      },
+      {
+        "typeId": "meeting",
+        "name": "Reunião",
+        "defaultTasks": [
+          {
+            "phase": "pre",
+            "title": "Pauta e objetivos"
+          },
+          {
+            "phase": "pre",
+            "title": "Convite + link/sala"
+          },
+          {
+            "phase": "exec",
+            "title": "Registro de decisões"
+          },
+          {
+            "phase": "post",
+            "title": "Enviar ata e próximos passos"
+          }
+        ]
+      },
+      {
+        "typeId": "talk",
+        "name": "Palestra/Workshop",
+        "defaultTasks": [
+          {
+            "phase": "pre",
+            "title": "Definir público e proposta"
+          },
+          {
+            "phase": "pre",
+            "title": "Divulgação"
+          },
+          {
+            "phase": "exec",
+            "title": "Credenciamento"
+          },
+          {
+            "phase": "post",
+            "title": "Certificados / follow-up"
+          }
+        ]
+      }
+    ]
+  }
+}

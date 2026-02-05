@@ -1,0 +1,49 @@
+<!doctype html><html lang="pt-BR"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#0b1220"/><title>Admin • Eventos AAA</title>
+<link rel="icon" href="./assets/icon.svg" type="image/svg+xml"/>
+<link rel="stylesheet" href="./css/styles.css"/></head>
+<body>
+<div class="admin-shell">
+<header class="topbar">
+<a class="pill ghost" href="./index.html#/dashboard"><span class="i i-arrow-left"></span> Voltar</a>
+<div class="brand compact"><div class="brand-title">Admin</div><div class="brand-subtitle">conteúdo • DLC • manutenção</div></div>
+<div class="topbar-actions"><button class="pill" id="btnLogout"><span class="i i-exit"></span> Sair</button></div>
+</header>
+
+<main class="main">
+<section class="card hero"><div class="hero-bg"></div><div class="hero-content">
+<div class="kicker">Área Administrativa (modo local)</div>
+<h1>Gerencie conteúdo, DLCs e dados</h1>
+<p class="muted">Tudo em <b>localStorage</b>, com <b>export/import</b>. Pronto para backend no futuro.</p>
+</div></section>
+
+<section class="grid two">
+<div class="card"><div class="card-head"><h2>Login</h2><div class="chip subtle"><span class="dot"></span> Local-only</div></div><div id="loginArea"></div></div>
+<div class="card"><div class="card-head"><h2>DLC / Conteúdo</h2><div class="chip subtle"><span class="dot"></span> Modular</div></div><div class="stack" id="dlcArea"></div></div>
+</section>
+
+<section class="grid two">
+<div class="card"><div class="card-head"><h2>Ferramentas</h2></div>
+<div class="stack">
+<button class="pill wide ghost" id="btnExportAll"><span class="i i-download"></span> Exportar tudo (JSON)</button>
+<label class="pill wide ghost file"><span class="i i-upload"></span> Importar tudo (JSON)<input type="file" id="fileImportAll" accept="application/json"/></label>
+<button class="pill wide danger" id="btnReset"><span class="i i-trash"></span> Resetar dados locais</button>
+<p class="muted tiny">Resetar apaga apenas dados do navegador atual.</p>
+</div></div>
+
+<div class="card"><div class="card-head"><h2>Status</h2></div>
+<div class="stack">
+<div class="stat"><div class="stat-label">Versão do Core</div><div class="stat-value" id="coreVersion">—</div></div>
+<div class="stat"><div class="stat-label">DLCs instaladas</div><div class="stat-value" id="dlcCount">—</div></div>
+<div class="stat"><div class="stat-label">Eventos</div><div class="stat-value" id="eventCount">—</div></div>
+<div class="stat"><div class="stat-label">Uso de storage (estimado)</div><div class="stat-value" id="storageUsage">—</div></div>
+</div></div></section>
+
+<footer class="footer"><div class="muted tiny">Eventos AAA • mobile-first • expansível</div></footer>
+</main></div>
+
+<div class="toast-stack" id="toasts" aria-live="polite" aria-atomic="true"></div>
+<div class="modal-root" id="modalRoot" aria-hidden="true"></div>
+<script type="module" src="./js/admin.js"></script>
+</body></html>
