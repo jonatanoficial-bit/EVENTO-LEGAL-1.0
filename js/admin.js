@@ -1,4 +1,5 @@
 import { CORE_VERSION } from "./core/version.js";
+import { BUILD_ID, BUILD_DATE, BUILD_DATETIME } from "./core/build.js";
 import { loadDB, exportDB, importDB, resetDB, estimateStorageBytes } from "./core/storage.js";
 import { isAdminLogged, loginAdmin, logoutAdmin } from "./core/auth.js";
 import { bytesToHuman, esc } from "./core/utils.js";
@@ -9,10 +10,10 @@ const toasts=document.getElementById("toasts");
 const toast=(t,m)=>toastFn(toasts,t,m);
 const loginArea=document.getElementById("loginArea");
 const dlcArea=document.getElementById("dlcArea");
-document.getElementById("coreVersion").textContent=CORE_VERSION;
+document.getElementById("coreVersion").textContent=`${CORE_VERSION} • build ${BUILD_ID} • ${BUILD_DATETIME}`;
 
 document.getElementById("btnLogout").addEventListener("click",()=>{logoutAdmin();toast("Ok","Sessão encerrada.");render()});
-document.getElementById("btnExportAll").addEventListener("click",()=>{downloadText("eventosAAA_admin_export.json",exportDB());toast("Exportado","Arquivo gerado.")});
+document.getElementById("btnExportAll").addEventListener("click",()=>{downloadText("evento_legal_admin_export.json",exportDB());toast("Exportado","Arquivo gerado.")});
 document.getElementById("fileImportAll").addEventListener("change",async(e)=>{const f=e.target.files?.[0];if(!f)return;const text=await f.text();
 try{importDB(text);toast("Importado","Dados carregados.");render()}catch(err){toast("Erro",err.message||"Falha ao importar.")}finally{e.target.value=""}});
 document.getElementById("btnReset").addEventListener("click",()=>{resetDB();toast("Reset","Dados locais apagados.");render()});

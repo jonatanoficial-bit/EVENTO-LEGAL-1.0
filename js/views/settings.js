@@ -1,5 +1,6 @@
 import { loadDB, saveDB, estimateStorageBytes } from "../core/storage.js";
 import { bytesToHuman, esc } from "../core/utils.js";
+import { BUILD_ID, BUILD_DATE, BUILD_DATETIME } from "../core/build.js";
 import { pageShell } from "./templates.js";
 export function renderSettings(main,{toast}){
 const db=loadDB();
@@ -11,6 +12,8 @@ main.innerHTML=`${pageShell({title:"Configurações",subtitle:"Preferências •
 </div></div>
 <div class="card"><div class="card-head"><h2>Diagnóstico</h2></div><div class="stack">
 <div class="stat"><div class="stat-label">Core</div><div class="stat-value">${esc(db.meta?.coreVersion||"—")}</div></div>
+<div class="stat"><div class="stat-label">Build</div><div class="stat-value">${esc(db.meta?.buildId||BUILD_ID)}</div></div>
+<div class="stat"><div class="stat-label">Atualizado</div><div class="stat-value">${esc(db.meta?.buildDateTime||BUILD_DATETIME)}</div></div>
 <div class="stat"><div class="stat-label">Eventos</div><div class="stat-value">${(db.events||[]).length}</div></div>
 <div class="stat"><div class="stat-label">Storage (estim.)</div><div class="stat-value">${bytesToHuman(estimateStorageBytes())}</div></div>
 </div></div></section>`;

@@ -10,12 +10,16 @@ import { renderTickets } from "./views/tickets.js";
 import { renderAttendance } from "./views/attendance.js";
 import { renderContent } from "./views/content.js";
 import { renderSettings } from "./views/settings.js";
+import { CORE_VERSION } from "./core/version.js";
+import { BUILD_DATETIME } from "./core/build.js";
 
 const main=document.getElementById("main");
 const drawer=document.getElementById("drawer");
 const modalRoot=document.getElementById("modalRoot");
 const toasts=document.getElementById("toasts");
 const storageStat=document.getElementById("storageStat");
+const buildStat=document.getElementById("buildStat");
+const buildChip=document.getElementById("buildChip");
 const toast=(t,m)=>toastFn(toasts,t,m);
 
 const openDrawer=()=>drawer.setAttribute("aria-hidden","false");
@@ -24,10 +28,14 @@ document.getElementById("btnMenu").addEventListener("click",openDrawer);
 document.getElementById("btnCloseDrawer").addEventListener("click",closeDrawer);
 drawer.addEventListener("click",(e)=>{if(e.target===drawer)closeDrawer()});
 
-function updateStorageStat(){storageStat.textContent=`Storage: ${bytesToHuman(estimateStorageBytes())}`;}
+function updateStorageStat(){storageStat.textContent=`Storage: ${bytesToHuman(estimateStorageBytes())}`;
+if(buildStat) buildStat.textContent=`Build: ${BUILD_DATETIME}`;
+if(buildChip) buildChip.textContent=`${BUILD_DATETIME}`;
+}
+
 
 document.getElementById("btnQuickAdd").addEventListener("click",()=>{location.hash="#/events";toast("Dica","Abra 'Eventos' e toque em 'Novo evento'.")});
-document.getElementById("btnExport").addEventListener("click",()=>{downloadText("eventosAAA_export.json",exportDB());toast("Exportado","JSON gerado.")});
+document.getElementById("btnExport").addEventListener("click",()=>{downloadText("evento_legal_export.json",exportDB());toast("Exportado","JSON gerado.")});
 document.getElementById("fileImport").addEventListener("change",async(e)=>{const file=e.target.files?.[0];if(!file)return;const text=await file.text();
 try{importDB(text);toast("Importado","Dados carregados.");updateStorageStat();router.render()}catch(err){toast("Erro",err.message||"Falha ao importar.")}finally{e.target.value=""}});
 

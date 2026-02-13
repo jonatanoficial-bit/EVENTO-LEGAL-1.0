@@ -1,12 +1,19 @@
 import { Repo } from "../core/repo.js";
 import { formatDate, formatBRL, esc } from "../core/utils.js";
 import { pageShell } from "./templates.js";
+import { BUILD_ID, BUILD_DATE, BUILD_DATETIME } from "../core/build.js";
 export function renderDashboard(main,{contentSnap}){
 const events=Repo.listEvents();
 const planned=events.reduce((s,e)=>s+Number(e.budget?.planned||0),0);
 const spent=events.reduce((s,e)=>s+Number(e.budget?.spent||0),0);
 main.innerHTML=`${pageShell({title:"Dashboard",subtitle:"Visão geral • pronto para produção"})}
 <section class="grid two">
+<div class="card"><div class="card-head"><h2>Build</h2><span class="badge info">core</span></div>
+<div class="stack">
+<div class="stat"><div class="stat-label">Versão</div><div class="stat-value">0.2.1-alpha</div></div>
+<div class="stat"><div class="stat-label">Build</div><div class="stat-value">${BUILD_ID}</div></div>
+<div class="stat"><div class="stat-label">Atualizado</div><div class="stat-value">${BUILD_DATETIME}</div></div>
+</div></div>
 <div class="card"><div class="card-head"><h2>Resumo financeiro</h2><span class="badge info">Beta</span></div>
 <div class="stack">
 <div class="stat"><div class="stat-label">Planejado</div><div class="stat-value">${formatBRL(planned)}</div></div>
